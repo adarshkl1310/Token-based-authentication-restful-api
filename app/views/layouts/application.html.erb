@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FroodleRuby</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+         <%= render '/layouts/nav' %>
+
+ 
+
+  </head>
+
+  <body>
+
+   <p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
+   <p class="yield"><%= yield %></p>
+
+  </body>
+</html>

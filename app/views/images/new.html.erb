@@ -1,0 +1,14 @@
+
+</br>
+</br>
+<div class="col-sm-6 ">
+<%= form_for @image, url: images_path, html: { multipart: true } do |form| %>
+
+  <%= form.file_field :item_image %>
+  <%= form.text_field :filename%>
+  <%= form.text_field :title%>
+  <%= form.submit %>
+
+<% end %>
+</div>
+

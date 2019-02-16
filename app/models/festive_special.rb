@@ -1,0 +1,2 @@
+class FestiveSpecial < ApplicationRecord
+end

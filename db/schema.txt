@@ -1,0 +1,424 @@
+
+
+Table "addresses" {
+  "id" INT
+  "address_1" VARCHAR
+  "address_2" VARCHAR
+  "landmark" VARCHAR
+  "city" VARCHAR
+  "state" VARCHAR
+  "country" VARCHAR
+  "zipcode" VARCHAR
+  "lat" VARCHAR
+  "long" VARCHAR
+}
+
+
+Table "users" {
+  "id" INT
+  "first_name" VARCHAR
+  "last_name" VARCHAR
+  "email" VARCHAR UNIQUE
+  "encrypted_password" VARCHAR
+  "reset_password_token" VARCHAR
+  "reset_password_sent_at" DATETIME
+  "phone" VARCHAR
+  "referral_code" VARCHAR
+  "is_blocked" BOOLEAN
+  "updated_at" DATETIME
+  "created_at" DATETIME
+}
+
+Table "user_meta" {
+  "meta_id" INT
+  "user_id" INT
+  "meta_name" VARCHAR
+  "meta_value" text
+}
+
+
+Table "otp_tokens" {
+  "phone" VARCHAR
+  "otp" VARCHAR
+  "created_at" DATETIME
+}
+
+
+Table "pages" {
+  "id" INT
+  "title" VARCHAR
+  "content" longtext
+  "updated_at" DATETIME
+  "created_at" DATETIME
+}
+
+
+Table "staff" {
+  "id" INT
+  "first_name" VARCHAR
+  "last_name" VARCHAR
+  "email" VARCHAR UNIQUE
+  "encrypted_password" VARCHAR
+  "reset_password_token" VARCHAR
+  "reset_password_sent_at" DATETIME
+  "phone" VARCHAR
+  "is_admin" BOOLEAN
+  "is_blocked" BOOLEAN
+  "updated_at" DATETIME
+  "created_at" DATETIME
+}
+
+Table "staff_meta" {
+  "meta_id" INT
+  "user_id" INT
+  "meta_name" VARCHAR
+  "meta_value" text
+}
+
+
+Table "user_addresses" {
+  "user_id" INT
+  "address_id" INT
+  "is_default" BOOLEAN
+  "address_type" ENUM
+  "updated_at" DATETIME
+  "created_at" DATETIME
+}
+
+Table "roles" {
+  "id" INT
+  "slug" VARCHAR
+  "role_name" VARCHAR
+  "permissions" text
+  "updated_at" DATETIME
+  "created_at" DATETIME
+}
+
+Table "role_staff" {
+  "role_id" INT
+  "staff_id" INT
+  "updated_at" DATETIME
+  "created_at" DATETIME
+}
+
+Table "branches" {
+  "id" INT
+  "email" VARCHAR
+  "phone" VARCHAR
+  "timezone" VARCHAR
+  "address_id" INT
+  "manager_id" INT
+  "is_disabled" BOOLEAN
+  "is_inactive" BOOLEAN
+}
+
+Table "branch_meta" {
+  "meta_id" INT
+  "branch_id" INT
+  "meta_name" VARCHAR
+  "meta_value" longtext
+}
+
+Table "branch_users" {
+  "branch_id" INT
+  "user_id" INT
+  "updated_at" DATETIME
+  "created_at" DATETIME
+}
+
+
+Table "settings" {
+  "id" INT
+  "meta_name" VARCHAR
+  "meta_value" longtext
+}
+
+
+Table "items" {
+  "id" INT
+  "name" VARCHAR
+  "price" FLOAT
+  "category_id" INT
+  "image_id" INT
+  "short_description" VARCHAR
+  "long_description" TEXT
+  "is_active" BOOLEAN
+  "preparation_time" TIME
+  "serves" INT
+  "calorie_count" INT
+  "meal_type_id" INT
+  "cuisine_id" INT
+  "spicy_level" INT
+  "is_new" BOOLEAN
+  "is_bestseller" BOOLEAN
+}
+
+
+Table "categories" {
+  "id" INT
+  "image_id" INT
+  "name" VARCHAR
+  "description" TEXT
+  "is_active" BOOLEAN
+}
+
+Table "festive_specials" {
+  "id" INT
+  "image_id" INT
+  "name" VARCHAR
+  "description" TEXT
+  "valid_from" DATETIME
+  "valid_till " DATETIME
+  "is_active" BOOLEAN
+}
+
+
+Table "festive_special_items" {
+  "festive_special_id" INT
+  "item_id" INT
+}
+
+Table "favorites" {
+  "id" INT
+  "user_id" INT
+  "item_id" INT
+  "updated_at" DATETIME
+  "created_at" DATETIME
+}
+
+Table "promotions" {
+  "id" INT
+  "title" VARCHAR
+  "tagline" TEXT
+  "description" TEXT
+  "image_id" INT
+  "valid_from" DATETIME
+  "valid_till " DATETIME
+  "updated_at" DATETIME
+  "created_at" DATETIME
+}
+
+
+Table "discounts" {
+  "id" INT
+  "title" VARCHAR
+  "is_active" BOOLEAN
+  "is_all" BOOLEAN
+  "category_id" INT
+  "item_id" INT
+  "discount" FLOAT
+  "valid_from" DATETIME
+  "valid_till " DATETIME
+}
+
+
+Table "coupons" {
+  "id" INT
+  "code" VARCHAR
+  "title" VARCHAR
+  "tagline" VARCHAR
+  "how_to_use" TEXT
+  "terms_conditions" TEXT
+  "is_all" BOOLEAN
+  "branch_id" INT
+  "user_id" INT
+  "discount_amount" FLOAT
+  "discount_percent" FLOAT
+  "min_cart_value" FLOAT
+  "is_active" BOOLEAN
+  "is_referral_reward" BOOLEAN
+  "valid_count" INT
+  "valid_from" DATETIME
+  "valid_till " DATETIME
+}
+
+Table "toppings" {
+  "id" INT
+  "name" VARCHAR
+  "price" FLOAT
+  "meal_type_id" INT
+}
+
+Table "topping_items" {
+  "topping_id" INT
+  "item_id" INT
+  "updated_at" DATETIME
+  "created_at" DATETIME
+}
+
+Table "meal_types" {
+  "id" INT
+  "image_id" INT
+  "name" VARCHAR
+}
+
+Table "cuisines" {
+  "id" INT
+  "name" VARCHAR
+}
+
+Table "images" {
+  "id" INT
+  "title" VARCHAR
+  "filename" VARCHAR
+}
+
+Table "carts" {
+  "id" INT
+  "user_id" INT
+  "updated_at" DATETIME
+  "created_at" DATETIME
+}
+
+Table "cart_items" {
+  "cart_id" INT
+  "item_id" INT
+  "quantity" INT
+}
+
+
+Table "orders" {
+  "id" INT
+  "cart_id" INT
+  "total_amount" FLOAT
+  "offer_discount" FLOAT
+  "coupon_discount" FLOAT
+  "delivery_charge" FLOAT
+  "total_tax" FLOAT
+  "branch_id" INT
+  "user_id" INT
+  "delivery_address_id" INT
+  "order_status" enum
+  "payment_mode_id" INT
+  "payment_status" enum
+  "coupon_id" INT
+  "referral_code" VARCHAR
+  "order_feedback_id" INT
+  "updated_at" DATETIME
+  "created_at" DATETIME
+}
+
+Table "order_meta" {
+  "meta_id" INT
+  "order_id" INT
+  "meta_name" VARCHAR
+  "meta_value" text
+}
+
+
+Table "order_feedbacks" {
+  "id" INT
+  "order_id" INT
+  "user_id" INT
+  "rating" FLOAT
+  "comment" TEXT
+}
+
+Table "payment_modes" {
+  "id" INT
+  "name" VARCHAR
+}
+
+Table "payment_mode_settings"{
+  "id" INT
+  "payment_mode_id" INT
+  "name" VARCHAR
+  "value" TEXT
+}
+
+Table "payment_responses" {
+  "id" INT
+  "order_id" INT
+  "payment_mode_id" INT
+  "message" text
+  "response" longtext
+  "updated_at" DATETIME
+  "created_at" DATETIME
+}
+
+
+
+
+
+Ref: meal_types.id > items.meal_type_id
+Ref: meal_types.image_id > images.id
+Ref: cuisines.id > items.cuisine_id
+
+Ref: categories.image_id > images.id
+Ref: items.image_id > images.id
+
+Ref: items.id > orders.cart_id
+
+
+
+
+
+
+Ref: "branches"."address_id" - "addresses"."id"
+
+Ref: "users"."id" - "orders"."user_id"
+
+Ref: "addresses"."id" - "orders"."delivery_address_id"
+
+Ref: "items"."meal_type_id" - "toppings"."meal_type_id"
+
+Ref: "branches"."id" - "orders"."branch_id"
+
+Ref: "orders"."payment_mode_id" - "payment_modes"."id"
+
+Ref: "orders"."order_feedback_id" - "order_feedbacks"."id"
+
+Ref: "orders"."id" - "order_feedbacks"."order_id"
+
+Ref: "order_feedbacks"."user_id" - "users"."id"
+
+
+
+
+
+Ref: "items"."id" - "cart_items"."item_id"
+
+Ref: "cart_items"."cart_id" - "carts"."id"
+
+Ref: "users"."id" - "carts"."user_id"
+
+
+Ref: "topping_items"."item_id" - "items"."id"
+
+Ref: "users"."id" - "coupons"."user_id"
+
+Ref: "user_addresses"."user_id" - "users"."id"
+
+Ref: "role_staff"."staff_id" - "staff"."id"
+
+Ref: "user_meta"."user_id" - "users"."id"
+
+Ref: "discounts"."category_id" - "categories"."id"
+
+Ref: "discounts"."item_id" - "items"."id"
+
+Ref: "payment_mode_settings"."payment_mode_id" - "payment_modes"."id"
+
+Ref: "payment_responses"."payment_mode_id" - "payment_mode_settings"."payment_mode_id"
+
+Ref: "orders"."id" - "payment_responses"."order_id"
+
+Ref: "images"."id" - "festive_specials"."image_id"
+
+Ref: "favorites"."user_id" - "users"."id"
+
+Ref: "favorites"."item_id" - "items"."id"
+
+Ref: "items"."id" - "festive_special_items"."item_id"
+
+Ref: "branch_users"."branch_id" - "users"."id"
+
+Ref: "user_addresses"."address_id" - "addresses"."id"
+
+Ref: "role_staff"."role_id" - "roles"."id"
+
+
+
+Ref: "topping_items"."topping_id" - "toppings"."id"
+
+Ref: "users"."id" - "branch_users"."user_id"

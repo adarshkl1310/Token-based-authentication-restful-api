@@ -1,0 +1,26 @@
+
+<%=@category.name%>
+
+
+<%@items.each do |item|%>
+ <div class="col-md-6">
+<div class="panel panel-default"> 
+
+
+<li><%=item.name%></li>
+<li><%=item.price%></li>
+<li><%=item.short_description%></li>
+<li><%=item.long_description%></li>
+<li><%=item.is_active%></li>
+<li><%=item.preparation_time%></li>
+<li><%=item.serves%></li>
+<li><%=item.calorie_count%></li>
+<li><%=item.spicy_level%></li>
+<li><%=item.is_new%></li>
+<li><%=item.is_bestseller%></li>
+
+</div>
+</div>
+<%end%>
+
+

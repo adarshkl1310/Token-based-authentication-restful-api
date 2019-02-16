@@ -1,0 +1,2 @@
+class FestiveSpecialsController < ApplicationController
+end

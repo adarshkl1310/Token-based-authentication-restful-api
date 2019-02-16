@@ -1,0 +1,53 @@
+<div class="col-md-4">
+<div class="text-center">
+
+
+<%@images.each do |page|%>
+ <div class="col-md-12">
+<div class="panel panel-default"> 
+<div class="text-center">
+  <%=image_tag page.item_image.url(:thumb),:size => "150x150", :crop => :fill%>
+  <li><%=page.title%></li>
+  <li><%=page.filename%></li>
+  
+  <div class="text-center">
+  <td><%= link_to 'Show', page,class: "btn btn-default"%></td>
+  <td><%= link_to 'Edit', edit_image_path(page),class: "btn btn-default"%></td>
+  <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default"%></td>
+  </div>
+  </div>
+ </div>
+ </div>
+<%end%>
+</div>
+
+
+
+
+<div class="col-md-4">
+<div class="text-center">
+<%@items.each do |item|%>
+ <div class="col-md-12">
+<div class="panel panel-default"> 
+<div class="text-center">
+<%=item.name%>
+<%=item.price%>
+<%=item.short_description%>
+<%=item.long_description%>
+<%=item.is_active%>
+<%=item.preparation_time%>
+<%=item.serves%>
+<%=item.calorie_count%>
+<%=item.spicy_level%>
+<%=item.is_new%>
+<%=item.is_bestseller%>
+ </div>
+ </div>
+ </div>
+<%end%>
+</div>
+</div>
+
+  
+
+  
