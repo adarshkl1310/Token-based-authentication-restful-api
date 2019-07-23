@@ -1,2 +1,0 @@
-class MealTypesController < ApplicationController
-end
