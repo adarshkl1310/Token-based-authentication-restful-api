@@ -1,8 +1,5 @@
 class ItemsController < ApplicationController
 
-
-
-
 before_action :find_category, only: [:show, :edit, :update, :destroy]
 
 def index
